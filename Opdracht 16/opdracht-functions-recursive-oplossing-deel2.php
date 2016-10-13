@@ -7,12 +7,12 @@ function calcRente($infoArray)
      $hoeveelheidRente = floor($infoArray['geld']*($infoArray['rente']/100));
      $infoArray['geld'] += $hoeveelheidRente;
      $infoArray['results'][$infoArray['index']] = 'In year: ' . $infoArray['index']. ' the money is ' . $infoArray['geld'];
-     $infoArray['index'];
+     ++$infoArray['index'];
      return calcRente($infoArray);
   }
   else
-  {
-    return $resultArray;
+  {   
+    return $infoArray;
   }
 
   
@@ -34,8 +34,8 @@ $renteVoet = 8;
 
         <h1>Funcs recursive</h1>
         <ul>
-          <?php foreach($result as $value): ?>
-            <li><?php echo $value ?></li>
+          <?php foreach($result as $kapitaal): ?>
+            <li><?= $kapitaal ?></li>
           <?php endforeach ?>
         </ul>
     
