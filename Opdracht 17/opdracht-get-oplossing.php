@@ -52,6 +52,7 @@ The singer is due to perform later at the Cosmopolitan hotel in Las Vegas.',
     }
     else{
       $doesNotExist = true;
+      $soloArtikel = true;
     }
   }
 
@@ -133,13 +134,18 @@ The singer is due to perform later at the Cosmopolitan hotel in Las Vegas.',
     .active p{
       font-size: 20px;
     }
+    h2{
+      margin-left: 2.5%;
+    }
 
   </style>
 	<body>
     <?php if(!$soloArtikel): ?>
       <h1>De krant van vandaag</h1>
-    <?php else: ?>
+    <?php elseif(!$doesNotExist): ?>
       <h1>Individueel Artikel</h1>
+    <?php else:?>
+      <h1>404<h1>
     <?php endif ?>
       <?php if(!$doesNotExist): ?>
         <div class="container cfr">
@@ -156,7 +162,7 @@ The singer is due to perform later at the Cosmopolitan hotel in Las Vegas.',
 
       </div> 
     <?php else: ?>
-      <h2>404 Article not found</h2>
+      <h2>Article not found</h2>
     <?php endif ?>  
     
 	</body>
