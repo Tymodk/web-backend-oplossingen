@@ -8,6 +8,7 @@
 		$_SESSION['data']['pagina-02-adres']['zipcode'] = $_POST['zipcode'];
  	}
  	$dataArray = $_SESSION['data'];
+ 	
 ?>
 
 <!DOCTYPE html>

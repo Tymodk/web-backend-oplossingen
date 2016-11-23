@@ -45,13 +45,13 @@ if (isset($_GET['kill']))
 		<h1>Adress Data</h1>
 		<form action= "opdracht-sessions-pagina-03-overzicht-oplossing.php" method="POST">
             <p>Street</p>
-            <input type="text" name="street" id="street" value="<?= $street ?>" <?php ($focusTar == "street")? 'autofocus' : '' ?>>
+            <input type="text" name="street" id="street" value="<?= $street ?>" <?= ($focusTar == "street")? 'autofocus' : '' ?>>
             <p>Street Nr.</p>
-            <input type="number" name="streetnr" id="streetnr" value="<?= $streetnr ?>" <?php ($focusTar == "streetnr")? 'autofocus' : '' ?>>       
+            <input type="number" name="streetnr" id="streetnr" value="<?= $streetnr ?>" <?= ($focusTar == "streetnr")? 'autofocus' : '' ?>>       
             <p>City</p>
-            <input type="text" name="city" id="city" value="<?= $city ?>" <?php ($focusTar == "city")? 'autofocus' : '' ?>>
+            <input type="text" name="city" id="city" value="<?= $city ?>" <?= ($focusTar == "city")? 'autofocus' : '' ?>>
             <p>Zipcode</p>
-            <input type="text" name="zipcode" id="zipcode" value="<?= $zipcode ?>" <?php ($focusTar == "zipcode")? 'autofocus' : '' ?> >
+            <input type="text" name="zipcode" id="zipcode" value="<?= $zipcode ?>" <?= ($focusTar == "zipcode")? 'autofocus' : '' ?> >
             <br>
 
             <input type="submit" name="submit" value="Volgende"> 
