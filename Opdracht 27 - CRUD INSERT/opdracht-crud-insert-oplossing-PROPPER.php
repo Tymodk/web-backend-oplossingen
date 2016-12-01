@@ -2,7 +2,7 @@
   $errorMessage = '';
   $index = 0;
 
-      $db = new mysqli('localhost', 'root', 'digimon8', 'bieren'); 
+      $db = new PDO('mysql:host=localhost;dbname=bieren', 'root', 'digimon8'); 
 
   
   if ( $db->connect_errno > 0 )
