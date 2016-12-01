@@ -46,6 +46,7 @@
 	function createMessage($message){
 		$_SESSION['message'] = $message;
 	}
+	
 	function showMessage(){
 		if(isset($_SESSION['message'])){
 			$message = $_SESSION['message'];

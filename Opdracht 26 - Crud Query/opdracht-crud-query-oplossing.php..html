@@ -1,0 +1,26 @@
+<?php
+  $errorMessage = 'Connection werks';
+
+
+   $db = new mysqli('localhost', 'root', 'digimon8', 'bieren'); 
+
+  
+  if ( $db->connect_errno > 0 )
+  {
+      $errorMessage = 'No connection' . $db->connect_error;
+  }
+?>
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+	</head>
+	<body>
+    <p><?= $errorMessage ?></p>
+
+     
+
+
+	</body>
+</html>

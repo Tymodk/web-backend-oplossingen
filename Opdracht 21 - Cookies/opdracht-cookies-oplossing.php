@@ -8,7 +8,7 @@
    		header('location: opdracht-cookies-oplossing.php');
 
    }
-   //Cookie not set > set cookie
+   //Cookie not set -> set cookie
     if(!isset($_COOKIE['loggedin'])){	
     	if(isset($_POST['submit'])){
    			if($_POST['username'] == $userdata[0] && $_POST['password'] == $userdata[1])
