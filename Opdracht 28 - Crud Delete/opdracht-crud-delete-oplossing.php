@@ -23,7 +23,22 @@
       {
         $fetchAssoc[] = $row;  
       }
+    if(isset($_POST['delete'])){
+       $brouwernr = $_POST['delete'];
+       $queryStmt = 'DELETE FROM brouwers WHERE brouwernr = ?';
+       $query = $db->prepare($queryStmt);   
+       $query->bind_param("i", $brouwernr);
+       $delete = $db->query($query);
+       if($delete){
+        $errorMessage = "Row deleted";
+
+      }
+      else{
+        $errorMessage = "Row cannot be deleted";
+      }
+    }
   }
+  
 ?>
 
 <!DOCTYPE html>
@@ -36,8 +51,9 @@
 	</head>
 	<body>
     <p><?= $errorMessage ?></p>
-    <p><?= $query ?></p>
+    <p><?= $queryStmt ?></p>
     <h1>Overzicht van de bieren</h1>
+    <form action="opdracht-crud-delete-oplossing.php" method="POST">
     <table>
       <thead>
         <tr>
@@ -56,7 +72,7 @@
             <td><?= $row['omzet']?> </td> 
             <td>
             <button type="submit" name="delete" value="<?= $row['brouwernr'] ?>">
-                <img src="icon-delete.png" alt="Delete button">
+                <img src="icon-delete.png" alt="Del button">
             </button>
             </td>
 
@@ -65,7 +81,7 @@
       <?php endforeach ?>
     </tbody>
     </table>
-     
+    </form>
 
 
 	</body>
