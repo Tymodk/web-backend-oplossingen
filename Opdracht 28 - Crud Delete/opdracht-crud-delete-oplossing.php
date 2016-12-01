@@ -28,7 +28,7 @@
        $queryStmt = 'DELETE FROM brouwers WHERE brouwernr = ?';
        $query = $db->prepare($queryStmt);   
        $query->bind_param("i", $brouwernr);
-       $delete = $db->query($query);
+       $delete = $query->execute();
        if($delete){
         $errorMessage = "Row deleted";
 
