@@ -50,7 +50,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>CRUD QUERY DEEL 1</title>
+		<title>CRUD QUERY DEEL 2</title>
     <style>
         .odd{background-color: lightgrey;}
     </style>
