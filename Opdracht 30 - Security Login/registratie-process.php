@@ -1,9 +1,7 @@
 <?php
 
   session_start();
-  function __autoload( $classname ){
-    require_once( $classname . '.php' );
-  }
+
 
 
   if (isset($_POST['generatePassword'])){
@@ -45,7 +43,7 @@
       }
       else{
         unset($_SESSION['errorLog']['database']);
-        $salt = "50426043585012c9370411.98345789";
+        $salt = uniqid(mt_rand(), true);
         $hashedPass = hash('sha512', ($_SESSION['registerInfo']['password']  . $salt));
         
 
@@ -63,11 +61,13 @@
         else{
           unset($_SESSION['errorLog']['database']);
         }
-        setcookie('login', $_SESSION['registerInfo']['email'] . ',' . $hashedPass, time() + (86400 * 30));
+        setcookie('login', $_SESSION['registerInfo']['email'] . ',' . hash('sha512', $_SESSION['registerInfo']['email'] . $salt), time() + (86400 * 30));
+        header('location:dashboard.php');
       }
     }
-    header('location:registratie-form.php');
+    
   }
+  else{header('location:registratie-form.php');}
 
 
 

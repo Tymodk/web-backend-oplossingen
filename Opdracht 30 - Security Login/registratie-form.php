@@ -1,8 +1,6 @@
 <?php
   session_start();
-  function __autoload( $classname ){
-    require_once( $classname . '.php' );
-  }
+
   $email = ''; // to not get errors from form requiring these vars
   $password = ''; // ^
   $errors = '';
@@ -14,6 +12,7 @@
     $password = $_SESSION['registerInfo']['password'];
   }
   
+  if(isset($_COOKIE['login'])){ header('location:dashboard.php'); }
 ?>
 
 <!DOCTYPE html>
@@ -43,7 +42,7 @@
         </li>
       </ul>
       
-      <input type="submit" name="submit" value="log in">
+      <input type="submit" name="submit" value="Registreer">
     </form>
 	</body>
 </html>
