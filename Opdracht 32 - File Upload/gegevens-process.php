@@ -1,5 +1,6 @@
 <?php
 	session_start();
+	define('ROOT', dirname(__FILE__));
 	if (isset($_POST['submit'])){
 		$email = $_POST['email'];
 		if ((($_FILES["file"]["type"] == "image/gif")
@@ -11,7 +12,7 @@
 			}
 			else{
 				$fileName = time() . $_FILES["file"]["name"];
-				define('ROOT', dirname(__FILE__));
+				
 				$connection = new PDO('mysql:host=localhost;dbname=opdracht-file-upload', 'root', 'digimon8');
       			$query = 'SELECT * 
                       	      FROM users 

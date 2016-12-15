@@ -22,9 +22,6 @@
     }
     else{
       unset($_SESSION['errorLog']['email']);
-      
-      // controleren of het emailadres reeds in de db voorkomt
-
       $connection = new PDO('mysql:host=localhost;dbname=opdracht-file-upload', 'root', 'digimon8');
       $query = 'SELECT * 
                     FROM users 
