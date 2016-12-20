@@ -52,10 +52,10 @@
               $copySent = mail( $to, $title, $mailMessage, $headers);
             }
             if($isSent && $copySent){
-              $_SESSION['errorLog']['success'] = "Email(s) sent!";
+              $_SESSION['errorLog']['success'] = "Email(s) sent! (nonAPI)";
               }
             else{
-              $_SESSION['errorLog']['success'] = "Email(s) not sent, try again.";
+              $_SESSION['errorLog']['success'] = "Email(s) not sent, try again. (nonAPI)";
             }
           }
 

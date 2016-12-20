@@ -5,6 +5,7 @@
    $email = '';
    $message = '';
    $errors = '';
+   $copy = '';
    if(isset($_SESSION['formInfo'])){
    	$email = $_SESSION['formInfo']['email'];
    	$message = $_SESSION['formInfo']['message'];
@@ -50,6 +51,7 @@
 			 $(function(){
         		$('#mail-form').submit(function(){
           			var info = $("#mail-form").serialize();
+          			console.log('formData:' + info);
           			$.ajax({
                			type: 'POST',
                			url: 'contact-api.php',

@@ -1,7 +1,7 @@
 <?php
    session_start();
-   if(isset($_POST['submit'])){
-   	$_SESSION['formInfo']['email'] = $_POST['email'];
+   
+   	$_SESSION['formInfo']['email'] = $_POST['email'] .;
    	$_SESSION['formInfo']['message'] = $_POST['message'];
    	$_SESSION['formInfo']['checkbox'] = ($_POST['sendCopy'] != NULL)? 'checked' : '';
 
@@ -56,7 +56,7 @@
                  $ajaxMessage['type']  = 'success';
                  echo json_encode($ajaxMessage);
                }
-               else{$_SESSION['errorLog']['success'] = "Email() sent!";}  
+               else{$_SESSION['errorLog']['success'] = "Email(s) sent!";}  
                header('location:contact-form.php');      	  	
         	  }
         	  else{
@@ -69,7 +69,7 @@
         	  }
         	}	
    		}
-   }
+   
 
    
 ?>
