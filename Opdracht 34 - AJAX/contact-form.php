@@ -45,6 +45,29 @@
 			</form>
 	</div>
 
-
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+		<script>
+			 $(function(){
+        		$('#mail-form').submit(function(){
+          			var info = $("#mail-form").serialize();
+          			$.ajax({
+               			type: 'POST',
+               			url: 'contact-api.php',
+               			data: info,
+               			success: function(data) {
+                			data = JSON.parse(data);
+                 			if(data['type'] == "success"){
+                        		$("#mail-form").fadeOut(500, function(){
+                            	$("#formLoc").append("<p>Your emails have been sent!</p>").hide().fadeIn(500);});
+                     		}
+                     		if(data['type'] == "error") {
+                        	$("#formLoc").prepend("<p>Something went wrong, your email did not get sent.</p>").hide().fadeIn(500);
+                     		}
+                   		}
+               		})
+               		return false;
+        		})
+     		})
+		</script>
 	</body>
 </html>

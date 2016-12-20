@@ -45,36 +45,31 @@
         	  	$mailMessage = "<h2> Beste, </h2>" ;
         	  	$mailMessage .= "<p> Hier is uw copy van het bericht aan" . $admin . "<p>";
         	  	$mailMessage .= "<p>" . $message . "</p>";
-        	  	$headers = 'From: ' . $admin . "\r\n";        
+        	  	$headers = 'From: ' . $admin . "\r\n";    
         	  	$headers .= "MIME-Version: 1.0\r\n"; //https://css-tricks.com/sending-nice-html-email-with-php/
-			    $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";  	  	
+			         $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";  	  	
 
         	  	$copySent = mail( $to, $title, $mailMessage, $headers);
         	  }
-        	  if($isSent){
-        	  	$_SESSION['errorLog']['success'] = "Email to admin sent!";
-        	  	if($copySent){
-        	  		$_SESSION['errorLog']['success'] = "Email to sender sent!";
-        	  	}
-        	  	else{
-        	  		$_SESSION['errorLog']['success'] = "Email to sender not sent , try again.";
-        	  	}
+        	  if($isSent && $copySent){
+              if (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest'){
+                 $ajaxMessage['type']  = 'success';
+                 echo json_encode($ajaxMessage);
+               }
+               else{$_SESSION['errorLog']['success'] = "Email() sent!";}  
+               header('location:contact-form.php');      	  	
         	  }
         	  else{
-        	  	$_SESSION['errorLog']['success'] = "Email(s) not sent, try again.";
+              if (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest'){
+                 $ajaxMessage['type']  = 'error';
+                 echo json_encode($ajaxMessage);
+               }
+               else{$_SESSION['errorLog']['success'] = "Email(s) not sent, try again.";}
+               header('location:contact-form.php');
         	  }
-        	}
-
-	
+        	}	
    		}
    }
+
    
-
-
-
-
-
-
-
-   header('location:contact-form.php');
 ?>
