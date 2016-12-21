@@ -1,7 +1,7 @@
 <?php
    session_start();
-   
-   	$_SESSION['formInfo']['email'] = $_POST['email'] .;
+   if(isset($_POST['email'])){
+   	$_SESSION['formInfo']['email'] = $_POST['email'];
    	$_SESSION['formInfo']['message'] = $_POST['message'];
    	$_SESSION['formInfo']['checkbox'] = ($_POST['sendCopy'] != NULL)? 'checked' : '';
 
@@ -69,7 +69,7 @@
         	  }
         	}	
    		}
-   
+   }
 
    
 ?>
