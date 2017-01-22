@@ -11,8 +11,8 @@
     </head>
     <body>
        <div class="container">
-       		@yield('content');
+       		@yield('content')
        </div>
-    @yield('footer');
+    @yield('footer')
     </body>
 </html>

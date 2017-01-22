@@ -11,15 +11,16 @@
 |
 */
 
+Route::get('/', 'PostsController@index');
+Route::get('home', 'PostsController@index');
+Route::get('comments/{id}', 'PostsController@show');
+Route::get('instructies', 'PostsController@instructies');
 
-Route::get('contact', 'PagesController@contact');
-Route::get('about', 'PagesController@about');
+Route::controllers([
+		'auth' => 'Auth\AuthController',
+		'password' => 'Auth\PasswordController',
 
-Route::get('articles', 'ArticlesController@index');
-Route::get('articles/create', 'ArticlesController@create');
-Route::get('articles/{id}', 'ArticlesController@show');
-Route::post('articles', 'ArticlesController@store');
-
+	]);
 
 
 
