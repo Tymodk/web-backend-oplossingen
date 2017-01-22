@@ -24,7 +24,14 @@
                             <a href="{{$post->link}}" class="urlTitle">{{ $post->title }}</a>                    
                         </div>                         
                         <div class="info">
-                            1 point  | posted by gasul | <a href="comments/{{$post->id}}">1 comment</a>
+                            @unless($post->commentcount == 1 )
+                                1 point  | posted by {{ $post->username }} | <a href="comments/{{$post->id}}">{{ $post->commentcount}} comments </a>
+                            @else
+                                1 point  | posted by {{ $post->username }} | <a href="comments/{{$post->id}}">{{ $post->commentcount}} comment </a>
+
+                            @endunless
+
+                            
                         </div>                    
                         </li> 
                         @endforeach                  

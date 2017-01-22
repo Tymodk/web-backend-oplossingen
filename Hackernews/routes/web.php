@@ -12,15 +12,11 @@
 */
 
 Route::get('/', 'PostsController@index');
-Route::get('home', 'PostsController@index');
+Route::get('article/add', 'PostsController@create');
 Route::get('comments/{id}', 'PostsController@show');
 Route::get('instructies', 'PostsController@instructies');
 
-Route::controllers([
-		'auth' => 'Auth\AuthController',
-		'password' => 'Auth\PasswordController',
-
-	]);
-
-
+Auth::routes();
+Route::get('/home', 'HomeController@index');
+Route::post('article/add', 'PostsController@store');
 
