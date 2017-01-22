@@ -19,4 +19,5 @@ Route::get('instructies', 'PostsController@instructies');
 Auth::routes();
 Route::get('/home', 'HomeController@index');
 Route::post('article/add', 'PostsController@store');
+Route::post('comments/{id}', 'PostsController@addComment');
 

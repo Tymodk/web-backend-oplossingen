@@ -2,7 +2,7 @@
 
 @section('content')
 	@if (Auth::guest())
-        <h2><a href="/home">Log in first!</h2>
+        <h2><a href="/Hackernews/public/home">Log in first!</h2>
     @else
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
@@ -22,7 +22,7 @@
 
                 <div class="panel-content">               
                         {!! Form::open() !!}
-                        {!! Form::hidden('user_id', Auth::user()->id) !!}
+
                             <div class="form-group">
                                 {!! Form::label('title', 'Title (max. 255 characters')  !!}
                                 {!! Form::text('title', null, ['class' => 'form-control']) !!}
