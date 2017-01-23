@@ -26,15 +26,15 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $posts = Post::all();
+        $posts = Post::latest('updated_at')->get();
+         
         foreach ($posts as $post) {
-            $post['username'] = User::findOrFail($post['id'])->name; 
+            $post['username'] = $post->user->name; 
             if(Comment::find($post['id'])){
-                $post['commentcount'] = Comment::where('post_id', $post['id'])->count();
-                
-            }
-            else{$post['commentcount'] = 0;}   
-        }     
+                $post['commentcount'] = $post->comments->count();
+            }   
+            else{$post['commentcount'] = 0;}
+        }        
         return view('hackerpages.index', compact('posts'));
     }
 }
