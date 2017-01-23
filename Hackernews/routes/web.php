@@ -13,6 +13,8 @@
 
 Route::get('/', 'PostsController@index');
 Route::get('article/add', 'PostsController@create');
+Route::get('article/edit/{id}', 'PostsController@edit');
+Route::get('article/delete/{id}', 'PostsController@delete');
 Route::get('comments/{id}', 'PostsController@show');
 Route::get('instructies', 'PostsController@instructies');
 

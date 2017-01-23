@@ -11,6 +11,14 @@
                     <div class="panel panel-default">
                         <div class="panel-heading clearfix">
                             Article: {{$post->title}}
+                            @if (Auth::user())
+                                @if (Auth::user()->name == $post->username)
+
+                            <a href="/Hackernews/public/article/delete/{{$post->id}}" class="btn btn-danger btn-xs pull-right">
+                                <i class="fa fa-btn fa-trash" title="delete"></i> delete article
+                            </a>
+                                @endif
+                            @endif
                         </div>
                             <div class="panel-content">                                
                                  <div class="vote">                                                                                
@@ -26,15 +34,18 @@
                                         
 
                                         <a href="{{$post->link}}" class="urlTitle">{{$post->title}}</a>
-
-                                        
+                                        @if (Auth::user())
+                                            @if (Auth::user()->name == $post->username)
+                                        <a href="Hackernews/public/article/edit/{{$post->id}}" class="btn btn-primary btn-xs edit-btn">edit</a>
+                                            @endif
+                                        @endif
 
                                     </div>                                   
                                     <div class="info">
                                         @unless($post->commentcount == 1 )
-                                            1 point  | posted by {{ $post->username }} | {{ $post->commentcount}} comments
+                                            {{ $post->votes }} points | posted by {{ $post->username }} | {{ $post->commentcount}} comments
                                         @else
-                                            1 point  | posted by {{ $post->username }} | {{ $post->commentcount}} comment
+                                            {{ $post->votes }} points | posted by {{ $post->username }} | {{ $post->commentcount}} comment
 
                                         @endunless
                                     </div>

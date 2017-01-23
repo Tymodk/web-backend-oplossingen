@@ -29,6 +29,12 @@ class PostsController extends Controller
         
         return view('hackerpages.show', compact('post', 'comments'));
     }
+    public function delete($id){
+        $post = Post::findOrFail($id);
+        $post->delete();
+        return redirect('home');
+    }
+
     public function index()
     {
         $posts = Post::latest('updated_at')->get();
@@ -42,6 +48,7 @@ class PostsController extends Controller
         }        
         return view('hackerpages.index', compact('posts'));
     }
+
     public function create()
     {        
         return view('hackerpages.create');

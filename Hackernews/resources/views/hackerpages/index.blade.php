@@ -21,13 +21,18 @@
                                 </div>                                 
                         </div>                       
                         <div class="url">                        
-                            <a href="{{$post->link}}" class="urlTitle">{{ $post->title }}</a>                    
+                            <a href="{{$post->link}}" class="urlTitle">{{ $post->title }}</a>   
+                            @if (Auth::user())
+                                @if (Auth::user()->name == $post->username)
+                                    <a href="Hackernews/public/article/edit/{{$post->id}}" class="btn btn-primary btn-xs edit-btn">edit</a>
+                                @endif
+                            @endif                 
                         </div>                         
                         <div class="info">
                             @unless($post->commentcount == 1 )
-                                1 point  | posted by {{ $post->username }} | <a href="comments/{{$post->id}}">{{ $post->commentcount}} comments </a>
+                                {{ $post->votes }} points  | posted by {{ $post->username }} | <a href="comments/{{$post->id}}">{{ $post->commentcount}} comments </a>
                             @else
-                                1 point  | posted by {{ $post->username }} | <a href="comments/{{$post->id}}">{{ $post->commentcount}} comment </a>
+                                {{ $post->votes }} points  | posted by {{ $post->username }} | <a href="comments/{{$post->id}}">{{ $post->commentcount}} comment </a>
 
                             @endunless
 
