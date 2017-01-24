@@ -36,7 +36,7 @@
                                         <a href="{{$post->link}}" class="urlTitle">{{$post->title}}</a>
                                         @if (Auth::user())
                                             @if (Auth::user()->name == $post->username)
-                                        <a href="Hackernews/public/article/edit/{{$post->id}}" class="btn btn-primary btn-xs edit-btn">edit</a>
+                                        <a href="/Hackernews/public/article/edit/{{$post->id}}" class="btn btn-primary btn-xs edit-btn">edit</a>
                                             @endif
                                         @endif
 

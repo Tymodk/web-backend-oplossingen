@@ -29,6 +29,24 @@ class PostsController extends Controller
         
         return view('hackerpages.show', compact('post', 'comments'));
     }
+
+    public function editView($id){
+        $post = Post::findOrFail($id);        
+        return view('hackerpages.edit', compact('post'));
+
+    }
+    public function edit($id, \App\Http\Requests\CreatePostRequest $request){
+        $post = Post::findOrFail($id);
+        $updatedPost = new Post($request->all());
+        $post['title'] = $updatedPost['title'];
+        $post['link'] = $updatedPost['link'];
+        $post->update();
+        $redirect = 'comments/' . $post['id'];     
+        return redirect($redirect);
+
+    }
+
+
     public function delete($id){
         $post = Post::findOrFail($id);
         $post->delete();
@@ -56,8 +74,9 @@ class PostsController extends Controller
 
 
 
-    public function store(){
-        $post = new Post(Request::all());
+
+    public function store(\App\Http\Requests\CreatePostRequest $request){
+        $post = new Post($request->all());
         Auth::user()->posts()->save($post);        
         return redirect('home');
     }

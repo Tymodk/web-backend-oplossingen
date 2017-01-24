@@ -21,35 +21,34 @@
                 </ul>
             </div>
            @endif
-            
 
 
-             <div class="breadcrumb">
-                
+             <div class="breadcrumb">                
                 <a href="/hackernews/public">← back to overview</a>
-
             </div>
             
             <div class="panel panel-default">
-                <div class="panel-heading">Add article</div>
+                <div class="panel-heading">Edit article
+                    <a href="/Hackernews/public/article/delete/{{$post->id}}" class="btn btn-danger btn-xs pull-right">
+                                <i class="fa fa-btn fa-trash" title="delete"></i> delete article
+                            </a>
+                </div>
 
                 <div class="panel-content">               
                         {!! Form::open() !!}
 
                             <div class="form-group">
                                 {!! Form::label('title', 'Title (max. 255 characters')  !!}
-                                {!! Form::text('title', null, ['class' => 'form-control']) !!}
+                                {!! Form::text('title', $post->title, ['class' => 'form-control']) !!}
                             </div>
                             <div class="form-group">
                                 {!! Form::label('link', 'URL') !!}
-                                {!! Form::text('link', null, ['class' => 'form-control']) !!}
+                                {!! Form::text('link', $post->link, ['class' => 'form-control']) !!}
                             </div>   
-                            <div class="form-group"> 
-                                                                                        
+                            <div class="form-group">                                
                                 <button type="submit" class="btn btn-default">
-                                    <i class="fa fa-plus"></i> Add Article
-                                </button>
-
+                                <i class="fa fa-pencil-square-o"></i> Edit Article
+                            </button>                                                     
                             </div>
                             
                             {!! Form::close() !!}            
