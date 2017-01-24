@@ -33,7 +33,7 @@
                                 <i class="fa fa-btn fa-trash" title="delete"></i> delete article
                             </a>
                 </div>
-
+                @if (Auth::user()->id == $post->user_id)
                 <div class="panel-content">               
                         {!! Form::open() !!}
 
@@ -53,6 +53,9 @@
                             
                             {!! Form::close() !!}            
                 </div>
+                @else
+                <h1>Wrong user!</h1>
+                @endif
             </div>
 
         </div>
