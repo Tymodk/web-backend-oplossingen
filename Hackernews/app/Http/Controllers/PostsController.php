@@ -17,7 +17,7 @@ class PostsController extends Controller
     public function show($id){
     	$post = Post::findOrFail($id);
         $post['username'] = $post->user->name;        
-        if(Comment::find($post['id'])){
+        if($post->comments->count()){
             $post['commentcount'] = $post->comments->count();
         }
         else{$post['commentcount'] = 0;}
@@ -61,7 +61,7 @@ class PostsController extends Controller
 
         foreach ($posts as $post) {
             $post['username'] = $post->user->name; 
-            if(Comment::find($post['id'])){
+            if($post->comments->count()){
                 $post['commentcount'] = $post->comments->count();
             }   
             else{$post['commentcount'] = 0;}
