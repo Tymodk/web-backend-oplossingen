@@ -49,7 +49,9 @@ class PostsController extends Controller
 
     public function delete($id){
         $post = Post::findOrFail($id);
-        $post->delete();
+        if(Auth::user() == $post->user){
+            $post->delete();
+        }
         return redirect('home');
     }
 
